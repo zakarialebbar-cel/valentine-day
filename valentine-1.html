@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine Surprise</title>
+<style>
+body {margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ff9a9e,#fad0c4);height:100vh;overflow:hidden;display:flex;justify-content:center;align-items:center;position:relative;}
+.container{text-align:center;z-index:2;animation:popIn 1s ease-out;}
+h1{font-size:3em;color:#fff;text-shadow:2px 2px 10px rgba(0,0,0,0.3);margin-bottom:20px;}
+p{font-size:1.5em;color:#fff;margin-bottom:40px;}
+.heart{font-size:5em;color:#ff1a75;animation:heartbeat 1s infinite;cursor:pointer;}
+@keyframes heartbeat{0%,100%{transform:scale(1);}25%{transform:scale(1.2);}50%{transform:scale(1);}75%{transform:scale(1.2);}}
+@keyframes popIn{from{transform:scale(0);opacity:0;}to{transform:scale(1);opacity:1;}}
+.bubble{position:absolute;bottom:-50px;width:20px;height:20px;background:rgba(255,255,255,0.7);border-radius:50%;animation:rise 7s linear infinite;}
+@keyframes rise{0%{transform:translateY(0) scale(1);opacity:1;}50%{transform:translateY(-300px) scale(1.2);opacity:0.7;}100%{transform:translateY(-600px) scale(0.5);opacity:0;}}
+#surpriseBtn{padding:10px 20px;font-size:1.2em;border:none;border-radius:20px;background-color:#ff1a75;color:white;cursor:pointer;transition:transform 0.2s;}
+#surpriseBtn:hover{transform:scale(1.1);}
+</style>
+</head>
+<body>
+<audio id="bgMusic" autoplay loop><source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+<div id="bubbles"></div>
+<div class="container">
+<div class="heart" id="heart">❤️</div>
+<h1>You Can Be My Valentine</h1>
+<p>Wishing you love and happiness today!</p>
+<button id="surpriseBtn">Click for a surprise 💌</button>
+</div>
+<script>
+const bubbles=document.getElementById('bubbles');for(let i=0;i<50;i++){const bubble=document.createElement('div');bubble.classList.add('bubble');bubble.style.left=Math.random()*window.innerWidth+'px';bubble.style.width=bubble.style.height=(10+Math.random()*30)+'px';bubble.style.animationDuration=(5+Math.random()*5)+'s';bubbles.appendChild(bubble);}
+const btn=document.getElementById('surpriseBtn');btn.addEventListener('click',()=>{alert("💖 Happy Valentine's Day! 💖");});
+const heart=document.getElementById('heart');heart.addEventListener('click',()=>{heart.style.transform='scale(1.5)';setTimeout(()=>heart.style.transform='',300);});
+</script>
+</body>
+</html>
